@@ -43,14 +43,21 @@ class Scale:
         scale_types = ["major", "minor"]
         return f'{self.root} {scale_types[self.type]}'
 
-    def freq(self, note):
+    def freq(self, note, prev_freq):
         assert note in self.NOTES
-        return self.OCTAVE[note]
+
+        if prev_freq == 0:
+            return self.OCTAVE[note]
+        else:
+            return prev_freq * pow(2, 1 / 12)
 
     def freqs(self):
         freqs = []
+
+        prev_freq = 0
         for note in self.scale():
-            freqs.append(self.freq(note))
+            prev_freq = self.freq(note, prev_freq)
+            freqs.append(prev_freq)
 
         return freqs
 
@@ -60,5 +67,5 @@ if __name__ == '__main__':
     type = int(input("Type 1 for major, 0 for minor "))
     scale = Scale(root, type)
     print(scale.scale())
-    print(scale.freq('A'))
+    print(scale.freq('A', 0))
 
