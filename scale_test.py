@@ -10,7 +10,7 @@ class TestScale(unittest.TestCase):
         f_sharp_major = "F#, G#, A#, B, C#, D#, F, F#".split(", ")
 	
         self.check_cases([c_major, d_major, f_sharp_major],
-			Scale.major)
+			Scale.MAJOR)
 
     def test_minor_scales(self):
         a_minor = "A, B, C, D, E, F, G, A".split(", ")
@@ -18,7 +18,7 @@ class TestScale(unittest.TestCase):
         g_sharp_minor = "G#, A#, B, C#, D#, E, F#, G#".split(", ")
 
         self.check_cases([a_minor, d_sharp_minor, g_sharp_minor],
-			Scale.minor)
+			Scale.MINOR)
 
     def check_cases(self, test_cases, scale_type):
         for case in test_cases:
