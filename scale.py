@@ -40,7 +40,7 @@ class Scale:
         return scale_notes
 
     def scale_name(self):
-        scale_types = ["major", "minor"]
+        scale_types = ["minor", "major"]
         return f'{self.root} {scale_types[self.type]}'
 
     def freq(self, note, prev_freq):
